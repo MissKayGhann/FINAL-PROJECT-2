@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management Dashboard</title>
+    <script src="script.js" defer ></script>
+    <script src="calculator.js" defer></script>
+    <script src="main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById("event-calender");
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
+          });
+          calendar.render();
+        });
+  
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="calculator.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;1,200;1,400&family=Poppins:wght@100;200;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Start of Left Side Content -->
+        <aside>
+            <div class="close-btn" id="close-btn">  
+                <span class="material-icons">close</span>  
+            </div>   
+            <div class="sidebar">
+                <a id="all-tasks">
+                    <span class="material-icons">today</span>
+                    <h3>All Tasks</h3>
+                </a>
+                <a id="schedule">
+                    <span class="material-icons">upcoming</span>
+                    <h3>Schedule</h3>
+                </a>
+                <a href="Important" class="active">
+                    <span class="material-icons">priority_high</span>
+                    <h3>Important</h3>
+                </a>
+                <a id="notes">
+                    <span class="material-icons">notes</span>
+                    <h3>Notes</h3>
+                </a>
+                <a id="add-task">
+                    <span class="material-icons">add_task</span>
+                    <h3>Add Task</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Left Side Content -->
+        <!-- Start of Main Content -->               
+        <main>
+            <h1>Task Manager</h1>
+            <!-- <div class="date">
+                <input type="date">
+            </div> -->
+            <br>
+            <!-- <div class="insights">  -->
+                <!-- Start of Today Minibar -->
+                 <!-- <div class="box-one">
+                    <span class="material-icons">calendar_today</span>   
+                    <div class="middle">
+                        <div class="left">
+                            <h1>Today</h1>
+                            <h3>...</h3>
+                            <small class="text-muted">Last 24 Hours</small>
+                        </div>
+                    </div>
+                </div>  -->
+                <!-- End of Today Minibar -->
+                <!-- Start of Notes Minibar -->
+                 <!-- <div class="box-two">
+                    <span class="material-icons">text_snippet</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h1>Notes</h1>
+                            <h3>...</h3>
+                            <small class="text-muted">Last 24 Hours</small>
+                        </div>
+                    </div>
+                </div>    -->
+                <!-- End of Notes Minibar -->
+                <!-- Start of Important Minibar -->
+                <!-- <div class="box-three">
+                    <span class="material-icons">notification_important</span>  
+                    <div class="middle">
+                        <div class="left">
+                            <h1>IMPORTANT</h1>
+                            <h3>...</h3>
+                            <small class="text-muted">Last 24 Hours</small>
+                        </div>
+                    </div>
+                </div>    -->
+            <!-- </div>   -->
+                <!-- End of Important Minibar -->
+                <!-- Start of Display of To Do -->
+                <!-- <div id="recent-todo" class="recent-todo">
+                <h2>Recent Tasks</h2>
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>Task Subject</th>
+                            <th>Task Snippet</th>
+                            <th>Date</th>
+                            <th>Status</th>    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><select id="status-dropdown">
+                                <option value=" "></option>
+                                <option value="Not Done">Not Done</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Completed">Completed</option>
+                            </select></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="Today">Show All</a> -->
+            <!-- </div> -->
+            <br>
+            <div class="outer-holder">
+                 <div class="close-button">  
+                    <span class="material-icons">close</span>  
+                </div> 
+            <div class ="holder" id="holder"></div>
+            </div>
+            <br>
+            <div class="outer-schedule-holder">
+                <div class="close-button-two">  
+                       <span class="material-icons">close</span>  
+                </div> 
+                <div class ="schedule-holder" id="schedule-holder"></div>
+            </div>
+            <br>
+            <div class="outer-notes-holder">
+                <!-- <h4>Add Note</h4> -->
+                <div class="close-button-three">  
+                       <span class="material-icons">close</span>  
+                </div> 
+                <div class ="notes-holder" id="notes-holder"></div>
+                <div class="add-note" id="add-note">Add Note</div>
+            </div>
+        </main>
+        <!-- End of Main Content -->  
+        <!-- Start of Right Side Content -->  
+        <div class="right-content">
+            <!-- Start of Top -->
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons">menu</span>  
+                </button>
+                <div class="theme-toggle">
+                    <span class="material-icons active" >light_mode</span>
+                    <span class="material-icons">dark_mode</span>   
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Kareen</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-pic">
+                        <img src="/images/bubbles.jpg">
+                    </div>
+                </div>
+            </div>
+            <!-- End of Top -->
+            <!-- Start of Schedule -->
+            <div class="schedule">
+                <h2>Calender</h2>
+                <div id="event-calender"></div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <!-- <div class="calender"> -->
+                    <!-- <div class="calen-sched">
+                        <p><b>Meeting w Tim</b> at 11.30, I will have to be leaving!</p>
+                        <small class="text-muted">5 minutes ago</small>
+                    </div> -->
+                    <!-- <div class="add-schedule">
+                        <div>
+                            <span class="material-icons">add</span>
+                            <h3>Add into Schedule</h3>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="calulator-container">
+                <div id="display"></div>
+                 <div class="buttons-main">
+                     <div id="span-two" class="buttons">AC</div>
+                     <div class="buttons">DEL</div> 
+                     <div class="buttons">÷</div> 
+                     <div class="buttons">1</div> 
+                     <div class="buttons">2</div> 
+                     <div class="buttons">3</div> 
+                     <div class="buttons">*</div> 
+                     <div class="buttons">4</div> 
+                     <div class="buttons">5</div> 
+                     <div class="buttons">6</div> 
+                     <div class="buttons">+</div> 
+                     <div class="buttons">7</div> 
+                     <div class="buttons">8</div> 
+                     <div class="buttons">9</div> 
+                     <div class="buttons">-</div> 
+                     <div class="buttons">.</div> 
+                     <div id="span-two" class="buttons">0</div> 
+                     <div id="equal" class="buttons">=</div> 
+                 </div>
+            </div>
+        </div>
+        <div class="form-container">
+            <form action="https://myserver.com/accept.aspx" method="POST">
+                <div class="close-btn" id="close-btn-1">  
+                    <span class="material-icons">close</span>  
+                </div>  
+                <div class="form">
+                    <label for="todo-subject">Subject</label>
+                    <input id="todo-subject" type="text" name="todo-subject" placeholder="Text goes here!">
+                </div> 
+                <div class="form">
+                    <label for="todo-content">Content</label>
+                    <input id="todo-content" class="todo-content" type="text" name="todo-content" placeholder="Write here...">
+                </div>
+                <div class="form">
+                    <label for="complete-by">Complete by</label>
+                    <input id="complete-by" type="datetime-local" name="complete-by">
+                </div>
+                <div class="form">
+                    <select id="todo-status-dropdown" class="todo-status-dropdown">
+                        <option value="Not Done">Not Done</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+            </form>
+            <button id="saveForm" type="button" onclick="Save()">ADD</button>
+        </div>
+        <div class="form-container-two">
+            <form action="https://myserver.com/accept.aspx">
+                <div class="close-btn-four" id="close-btn-four">  
+                    <span class="material-icons">close</span>  
+                </div>  
+                <div class="form-two">
+                    <label for="notes-subject">Subject</label>
+                    <input id="notes-subject"type="text" name="notes-subject">
+                </div>
+                <div class="form-two">
+                    <label for="notes-content"></label>
+                    <input id="notes-content"type="text" name="notes-content">
+                </div>
+            </form>
+            <button id="saveNotes" type="button" onclick="saveNotes()">ADD</button>
+        </div>
+    </div>
+</body>
+</html>
